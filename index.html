@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Zentrifugalkraft</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+    <h1 class="Headline">Simmulationen Physik</h1>
+
+    <h2 class="Headline">Rotationssimulation</h2>
+    <div class="IframeContainer">
+        <iframe id="sim" src="Rotationssimulation.html" width="800" height="500" style="border:none;"></iframe>
+    </div>
+
+
+    <h3 class="Text">Rotation Controls</h3>
+
+    <div class="ControlRow">
+        <span class="Text">Angular Velocity:</span>
+        <input class="InputSlider" type="range" min="0" max="40" step="0.1" oninput="setOmega(this.value)">
+        <input class="InputBox" id="numberBoxOmega" type="number" oninput="setOmega(this.value)" value="1" placeholder="r/s">
+    </div>
+
+    <div class="ControlRow">
+        <span class="Text">Tangential Velocity:</span>
+        <input class="InputSlider" type="range" min="0" max="40" step="0.1" oninput="setTanVel(this.value)">
+        <input class="InputBox" id="numberBoxVelocity" type="number" oninput="setTanVel(this.value)" value="25" placeholder="m/s">
+    </div>
+
+    <div class="ControlRow">
+        <span class="Text">Mass:</span>
+        <input class="InputSlider" type="range" min="0" max="20" step="0.1" oninput="setMass(this.value)">
+        <input class="InputBox" id="numberBoxMass" type="number" oninput="setMass(this.value)" value="4.5" placeholder="Kg">
+    </div>
+
+    <div class="ControlRow">
+        <span class="Text">Radius:</span>
+        <input class="InputSlider" type="range" min="0" max="40" step="0.1" oninput="setRadius(this.value)">
+        <input class="InputBox" id="numberBoxRadius" type="number" oninput="setRadius(this.value)" value="25" placeholder="m">
+    </div>
+
+    <div class="ControlRow">
+        <span class="Text">Tracker Amount:</span>
+        <input class="InputSlider" type="range" min="0" max="64" step="1" oninput="setTrackerAmount(this.value)">
+        <input class="InputBox" id="numberBoxTracker" type="number" oninput="setTrackerAmount(this.value)" value="24" placeholder="Trackers/2pi">
+    </div>
+
+
+    <h2 class="Text">Gravitationssimulation</h2>
+    <div class="IframeContainer">
+        <iframe id="sim2" src="Gravitationssimulation.html" width="800" height="500" style="border:none;"></iframe>
+    </div>
+
+    <h3 class="Text">Gravity Controls</h3>
+
+    <div class="ControlRow">
+        <span class="Text">Gravity Value (G): </span>
+        <input class="InputSlider" type="range" min="0" max="20" step="0.1" value="5" oninput="setGravity(this.value)">
+        <input class="InputBox" id="numberBoxGravity" type="number" oninput="setGravity(this.value)" value="5" placeholder="Force Factor"><br>
+    </div>
+
+    <div class="ControlRow">
+        <span class="Text">Orbital Velocity </span>
+        <input class="InputCheckbox" type="checkbox" name="OrbitVelocityCheckbox" id="orbitVelocityCheckbox" checked oninput="setOrbitalVelocityOn(this.value)">
+    </div>
+
+    <div class="ControlRow">
+        <span class="Text">Gravitational Force </span>
+        <input class="InputCheckbox" type="checkbox" name="GravityCheckbox" id="gravityCheckbox" checked oninput="setGravitationalVelocityOn(this.value)">
+    </div>
+
+    <div class="ControlRow">
+        <span class="Text">Create new Trackers </span>
+        <input class="InputCheckbox" type="checkbox" name="CrateTrackerCheckbox" id="createTrackerCheckbox" checked oninput="setCreateTrackers(this.value)">
+    </div>
+
+    <div class="ControlRow">
+        <span class="Text">Delete existing Trackers </span>
+        <input class="InputCheckbox" type="checkbox" name="DeleteTrackerCheckbox" id="deleteTrackerCheckbox" oninput="setDeleteTrackers(this.value)">
+    </div>
+
+    <h3 class="Text">Object Creation Panel</h3>
+    <div style="border: 1px solid #ccc; padding: 15px; margin: 10px 0; background-color: #f9f9f9;">
+        <h4 class="Text">Create New Orbital Object</h4>
+        
+        <label class="Text">Color: 
+            <select class="InputBox" id="colorSelect">
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+                <option value="cyan">Cyan</option>
+                <option value="yellow">Yellow</option>
+                <option value="magenta">Magenta</option>
+                <option value="white">White</option>
+                <option value="orange">Orange</option>
+            </select>
+        </label><br><br>
+
+        <label class="Text">Shape: 
+            <select class="InputBox" id="shapeSelect">
+                <option value="Sphere">Sphere</option>
+                <option value="Cube">Cube</option>
+                <option value="Cylinder">Cylinder</option>
+                <option value="Cone">Cone</option>
+                <option value="Triangle">Triangle</option>
+            </select>
+        </label><br><br>
+
+        <label class="Text">Size X:     <input class="InputBox" type="number" id="sizeX" value="5" min="0.1" max="500" step="0.5"></label><br>
+        <label class="Text">Size Y:     <input class="InputBox" type="number" id="sizeY" value="5" min="0.1" max="500" step="0.5"></label><br>
+        <label class="Text">Size Z:     <input class="InputBox" type="number" id="sizeZ" value="5" min="0.1" max="500" step="0.5"></label><br><br>
+
+        <label class="Text">Position X: <input class="InputBox" type="number" id="posX" value="0" min="-200" max="200" step="1"></label><br>
+        <label class="Text">Position Y: <input class="InputBox" type="number" id="posY" value="0" min="-200" max="200" step="1"></label><br>
+        <label class="Text">Position Z: <input class="InputBox" type="number" id="posZ" value="0" min="-200" max="200" step="1"></label><br><br>
+
+        <button class="Button" onclick="createNewObjectInSim()">Create Object</button>
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,296 @@
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+
+// START JAVASCRIPT
+;(function() {;
+var ρσ_modules = {};
+ρσ_modules.pythonize = {};
+
+(function(){
+    function strings() {
+        var string_funcs, exclude, name;
+        string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+        if (!arguments.length) {
+            exclude = (function(){
+                var s = ρσ_set();
+                s.jsset.add("split");
+                s.jsset.add("replace");
+                return s;
+            })();
+        } else if (arguments[0]) {
+            exclude = Array.prototype.slice.call(arguments);
+        } else {
+            exclude = null;
+        }
+        if (exclude) {
+            string_funcs = string_funcs.difference(set(exclude));
+        }
+        var ρσ_Iter0 = string_funcs;
+        ρσ_Iter0 = ((typeof ρσ_Iter0[Symbol.iterator] === "function") ? (ρσ_Iter0 instanceof Map ? ρσ_Iter0.keys() : ρσ_Iter0) : Object.keys(ρσ_Iter0));
+        for (var ρσ_Index0 of ρσ_Iter0) {
+            name = ρσ_Index0;
+            (ρσ_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name] = (ρσ_expr_temp = ρσ_str.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name];
+        }
+    };
+    if (!strings.__module__) Object.defineProperties(strings, {
+        __module__ : {value: "pythonize"}
+    });
+
+    ρσ_modules.pythonize.strings = strings;
+})();
+async function __main__() {
+"use strict";
+    var display = canvas;
+    var scene = canvas();
+
+    var version, print, arange, __name__, type, ρσ_ls, G, OrbitalVelocity, GravityVelocity, DeleteTrackerParts, CreateNewTrackerParts, orbitalParts, trackerParts, trackerPart, part2, part1;
+    version = ρσ_list_decorate([ "3.2", "glowscript" ]);
+    Array.prototype['+'] = function(r) {return this.concat(r)}
+    Array.prototype['*'] = function(r) {return __array_times_number(this, r)}
+    window.__GSlang = "vpython";
+    print = GSprint;
+    arange = range;
+    __name__ = "__main__";
+    type = pytype;
+    var strings = ρσ_modules.pythonize.strings;
+
+    strings();
+    "4";
+    G = 5;
+    "6";
+    OrbitalVelocity = true;
+    "7";
+    GravityVelocity = true;
+    "8";
+    DeleteTrackerParts = false;
+    "9";
+    CreateNewTrackerParts = true;
+    "12";
+    orbitalParts = ρσ_list_decorate([]);
+    "13";
+    trackerParts = ρσ_list_decorate([]);
+    "15";
+    async function createNewObject(objColor, objShape, objSize, objPosition, saveAsGravPart) {
+        var ρσ_ls, newObject;
+        "16";
+        newObject = null;
+        "17";
+        if ((objShape === "Sphere" || typeof objShape === "object" && ρσ_equals(objShape, "Sphere"))) {
+            "18";
+            newObject = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({color: objColor, shape: objShape, size: objSize, pos: objPosition})]);
+            "19";
+        } else if ((objShape === "Cube" || typeof objShape === "object" && ρσ_equals(objShape, "Cube"))) {
+            "20";
+            newObject = ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({color: objColor, shape: objShape, size: objSize, pos: objPosition})]);
+            "21";
+        } else if ((objShape === "Cylinder" || typeof objShape === "object" && ρσ_equals(objShape, "Cylinder"))) {
+            "22";
+            newObject = ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({color: objColor, shape: objShape, size: objSize, pos: objPosition})]);
+            "23";
+        } else if ((objShape === "Cone" || typeof objShape === "object" && ρσ_equals(objShape, "Cone"))) {
+            "24";
+            newObject = ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({color: objColor, shape: objShape, size: objSize, pos: objPosition})]);
+            "25";
+        } else if ((objShape === "Triangle" || typeof objShape === "object" && ρσ_equals(objShape, "Triangle"))) {
+            "26";
+            newObject = ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({color: objColor, shape: objShape, size: objSize, pos: objPosition})]);
+            "28";
+        }
+        if (saveAsGravPart) {
+            "29";
+            orbitalParts.append(newObject);
+            "30";
+        } else {
+            "31";
+            trackerParts.append(newObject);
+        }
+    };
+    if (!createNewObject.__argnames__) Object.defineProperties(createNewObject, {
+        __argnames__ : {value: ["objColor", "objShape", "objSize", "objPosition", "saveAsGravPart"]},
+        __module__ : {value: null}
+    });
+
+    window.addEventListener("message", async function(event) {
+        if (event.data.objShape) {
+            const colorMap = {
+                "red": color.red,
+                "green": color.green,
+                "blue": color.blue,
+                "cyan": color.cyan,
+                "yellow": color.yellow,
+                "magenta": color.magenta,
+                "white": color.white,
+                "orange": color.orange
+            };
+            
+            const objColor = colorMap[event.data.objColor] || color.blue;
+            const objShape = event.data.objShape;
+            const objSize = vector(event.data.objSize.x, event.data.objSize.y, event.data.objSize.z);
+            const objPosition = vector(event.data.objPosition.x, event.data.objPosition.y, event.data.objPosition.z);
+            const saveAsGravPart = event.data.saveAsGravPart !== undefined ? event.data.saveAsGravPart : true;
+            
+            await createNewObject(objColor, objShape, objSize, objPosition, saveAsGravPart);
+        }
+
+        if (event.data.hasOwnProperty('G')) {
+            G = Number(event.data.G);
+        }
+        if (event.data.hasOwnProperty('OrbitOn')) {
+            OrbitalVelocity = Boolean(event.data.OrbitOn);
+        }
+        if (event.data.hasOwnProperty('GravOn')) {
+            GravityVelocity = Boolean(event.data.GravOn);
+        }
+        if (event.data.hasOwnProperty('TrackersOn')) {
+            CreateNewTrackerParts = Boolean(event.data.TrackersOn);
+        }
+        if (event.data.hasOwnProperty('DeleteTrackersOn')) {
+            DeleteTrackerParts = Boolean(event.data.DeleteTrackersOn);
+        }
+    });
+
+    "33";
+    (await createNewObject(color.cyan, "Sphere", vector(5, 5, 5), vector(1["-u"]()["*"](1), 0, 3), true));
+    "34";
+    (await createNewObject(color.blue, "Cone", vector(4, 1, 1), vector(10, 40, 1["-u"]()["*"](30)), true));
+    "35";
+    (await createNewObject(color.blue, "Triangle", vector(1, 3, 2), vector(50, 40, 1["-u"]()["*"](10)), true));
+    "36";
+    (await createNewObject(color.blue, "Cube", vector(2, 4, 5), vector(5, 6, 30), true));
+    "38";
+    async function addOrbitalVelocity(part1, part2) {
+        var ρσ_ls, r, direction, part1Mass, part2Mass, tangent, v, orbitalVelocity;
+        "39";
+        r = mag(part2.pos["-"](1["*"](part1.pos)));
+        "40";
+        direction = hat(part2.pos["-"](1["*"](part1.pos)));
+        "42";
+        part1Mass = part1.size.x["+"](part1.size.y)["+"](part1.size.z)["/"](3);
+        "43";
+        part2Mass = part2.size.x["+"](part2.size.y)["+"](part2.size.z)["/"](3);
+        "48";
+        tangent = hat(vector(1["-u"]()["*"](direction.z), 0, direction.x));
+        "50";
+        v = sqrt(G["*"](part2Mass)["/"](r))["*"](.9);
+        "52";
+        orbitalVelocity = tangent["*"](v);
+        "54";
+        part1.pos = part1.pos["+"](orbitalVelocity);
+        "55";
+        part2.pos = part2.pos["-"](1["*"](orbitalVelocity));
+    };
+    if (!addOrbitalVelocity.__argnames__) Object.defineProperties(addOrbitalVelocity, {
+        __argnames__ : {value: ["part1", "part2"]},
+        __module__ : {value: null}
+    });
+
+    "57";
+    async function AddGravVelocity(part1, part2) {
+        var ρσ_ls, r, direction, part1Mass, part2Mass, Fg, force, part1Acceleration, part2Acceleration;
+        "58";
+        r = mag(part2.pos["-"](1["*"](part1.pos)));
+        "60";
+        if (r["<"](part1.size.x["+"](part1.size.y)["+"](part1.size.z)["/"](3))) {
+            "61";
+            part1.size=part1.size["+"](part2.size);
+            "62";
+            part2.visible = false;
+        }
+        "64";
+        direction = hat(part2.pos["-"](1["*"](part1.pos)));
+        "66";
+        part1Mass = part1.size.x["+"](part1.size.y)["+"](part1.size.z)["/"](3);
+        "67";
+        part2Mass = part2.size.x["+"](part2.size.y)["+"](part2.size.z)["/"](3);
+        "69";
+        Fg = G["*"](part1Mass)["*"](part2Mass)["/"](r["*"](r));
+        "71";
+        force = direction["*"](Fg);
+        "73";
+        part1Acceleration = force["/"](part1Mass);
+        "74";
+        part2Acceleration = 1["-u"]()["*"](force)["/"](part2Mass);
+        "76";
+        part1.pos = part1.pos["+"](part1Acceleration);
+        "77";
+        part2.pos = part2.pos["+"](part2Acceleration);
+    };
+    if (!AddGravVelocity.__argnames__) Object.defineProperties(AddGravVelocity, {
+        __argnames__ : {value: ["part1", "part2"]},
+        __module__ : {value: null}
+    });
+
+    "79";
+    while (true) {
+        "80";
+        (await rate(40));
+        "82";
+        if ((DeleteTrackerParts === true || typeof DeleteTrackerParts === "object" && ρσ_equals(DeleteTrackerParts, true))) {
+            "83";
+            var ρσ_Iter1 = trackerParts;
+            ρσ_Iter1 = ((typeof ρσ_Iter1[Symbol.iterator] === "function") ? (ρσ_Iter1 instanceof Map ? ρσ_Iter1.keys() : ρσ_Iter1) : Object.keys(ρσ_Iter1));
+            for (var ρσ_Index1 of ρσ_Iter1) {
+                trackerPart = ρσ_Index1;
+                "84";
+                trackerPart.visible = false;
+                "85";
+                trackerParts.remove(trackerPart);
+            }
+        }
+        "87";
+        var ρσ_Iter2 = orbitalParts;
+        ρσ_Iter2 = ((typeof ρσ_Iter2[Symbol.iterator] === "function") ? (ρσ_Iter2 instanceof Map ? ρσ_Iter2.keys() : ρσ_Iter2) : Object.keys(ρσ_Iter2));
+        for (var ρσ_Index2 of ρσ_Iter2) {
+            part1 = ρσ_Index2;
+            "88";
+            if ((CreateNewTrackerParts === true || typeof CreateNewTrackerParts === "object" && ρσ_equals(CreateNewTrackerParts, true))) {
+                "89";
+                (await createNewObject(color.green, "Sphere", vector(.5, .5, .5), part1.pos, false));
+            }
+            "90";
+            var ρσ_Iter3 = orbitalParts;
+            ρσ_Iter3 = ((typeof ρσ_Iter3[Symbol.iterator] === "function") ? (ρσ_Iter3 instanceof Map ? ρσ_Iter3.keys() : ρσ_Iter3) : Object.keys(ρσ_Iter3));
+            for (var ρσ_Index3 of ρσ_Iter3) {
+                part2 = ρσ_Index3;
+                "91";
+                if ((part1 !== part2 && (typeof part1 !== "object" || ρσ_not_equals(part1, part2))) && (part1.visible !== false && (typeof part1.visible !== "object" || ρσ_not_equals(part1.visible, false))) && (part2.visible !== false && (typeof part2.visible !== "object" || ρσ_not_equals(part2.visible, false)))) {
+                    "92";
+                    if ((CreateNewTrackerParts === true || typeof CreateNewTrackerParts === "object" && ρσ_equals(CreateNewTrackerParts, true))) {
+                        "93";
+                        (await createNewObject(color.green, "Sphere", vector(.5, .5, .5), part2.pos, false));
+                        "94";
+                    }
+                    if (GravityVelocity) {
+                        "95";
+                        (await AddGravVelocity(part1, part2));
+                        "96";
+                    }
+                    if (OrbitalVelocity) {
+                        "97";
+                        (await addOrbitalVelocity(part1, part2));
+                        "98";
+                    }
+                } else {
+                    "99";
+                    continue;
+                }
+            }
+        }
+    }
+};
+if (!__main__.__module__) Object.defineProperties(__main__, {
+    __module__ : {value: null}
+});
+
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+// END JAVASCRIPT
+
+//--><!]]></script>
+</div>
